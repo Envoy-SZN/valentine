@@ -6,6 +6,48 @@
 <title>hiiiii</title>
 
 <style>
+/* ====== MOBILE STYLES ====== */
+@media (max-width: 480px) {
+  .card {
+    overflow-y: auto;       /* allow scrolling if content is too tall */
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+    min-height: auto;
+  }
+
+  img {
+    max-width: 180px;       /* scale down images */
+    max-height: 160px;
+    width: auto;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 1.3rem;      /* smaller headings on mobile */
+  }
+
+  p {
+    font-size: 0.95rem;     /* smaller paragraph text on mobile */
+  }
+
+  .buttons {
+    width: 100%;            /* allow more room for Yes/No buttons */
+    height: auto;
+  }
+
+  /* Final slide adjustments on mobile */
+  #slide-14 h1 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  #slide-14 p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+}
+
+/* ====== GENERAL STYLES ====== */
 body {
   margin: 0;
   padding: 0;
@@ -59,6 +101,7 @@ body {
   }
 }
 
+/* Container for slides */
 .container {
   position: relative;
   z-index: 1;
@@ -69,6 +112,7 @@ body {
   align-items: center;
 }
 
+/* Card style */
 .card {
   background: rgba(255,255,255,0.95);
   padding: 40px;
@@ -86,9 +130,11 @@ body {
   overflow: hidden;
 }
 
+/* Headings and text */
 h1 { font-size: 1.8rem; margin-bottom: 20px; }
 p { font-size: 1.1rem; margin-bottom: 20px; }
 
+/* Images */
 img {
   max-width: 250px;
   max-height: 220px;
@@ -97,6 +143,7 @@ img {
   margin-bottom: 20px;
 }
 
+/* Buttons */
 button {
   font-size: 1rem;
   padding: 12px 26px;
@@ -144,7 +191,10 @@ button {
   text-align: center;
 }
 
+/* Slides */
 .slide {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   position: absolute;
   inset: 0;
   display: flex;
@@ -165,6 +215,23 @@ button {
 .slide.exit-left {
   transform: translateX(-100%);
   opacity: 0;
+}
+
+/* Final slide adjustments */
+#slide-14 {
+  justify-content: flex-start;  /* align content to top */
+  padding: 20px 10px;           /* give some space top/bottom */
+  overflow-y: auto;             /* allow scrolling if needed */
+}
+
+#slide-14 h1 {
+  font-size: 1.2rem;   /* smaller heading for final slide */
+  margin-bottom: 12px;
+}
+
+#slide-14 p {
+  font-size: 0.9rem;   /* smaller paragraph for final slide */
+  margin-bottom: 0;
 }
 </style>
 </head>
@@ -317,11 +384,13 @@ function moveNoButtonRandomly() {
   const boxRect = buttonsBox.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
-  const maxX = boxRect.width - btnRect.width;
-  const maxY = boxRect.height - btnRect.height;
+  const padding = 10; // small padding
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+  const maxX = boxRect.width - btnRect.width - padding;
+  const maxY = boxRect.height - btnRect.height - padding;
+
+  const randomX = Math.random() * maxX + padding / 2;
+  const randomY = Math.random() * maxY + padding / 2;
 
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
