@@ -1,3 +1,1 @@
-changelog:
-- made it into a presentation
-- added animated emojis
+bro i genuinely changed so much shit i dont know what to write here anymore
