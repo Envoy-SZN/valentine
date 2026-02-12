@@ -1,362 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>why you should make ME your valentine</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #ffb6c1;
-      overflow: hidden;
-      height: 100vh;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>hiiiii</title>
 
-    /* Floating hearts */
-    .floating-hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffb6c1;
+  overflow: hidden;
+  height: 100vh;
+}
 
-    .floating-heart {
-      position: absolute;
-      bottom: -50px;
-      animation: floatUp linear infinite;
-      opacity: 0.9;
-      user-select: none;
-    }
+/* Floating hearts */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-      10% { opacity: 1; }
-      to {
-        transform: translateY(-120vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  animation: floatUp linear infinite;
+  opacity: 0.9;
+  user-select: none;
+}
 
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  to { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
 
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      text-align: center;
-      max-width: 500px;
-      width: 90%;
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  top: -10px;
+  pointer-events: none;
+  animation: confettiFall linear forwards;
+  z-index: 9999;
+}
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-    }
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    img {
-      max-width: 250px;
-      max-height: 220px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
+.card {
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
 
-    .buttons {
-      position: relative;
-      width: 260px;
-      height: 60px;
-      margin-top: 10px;
-    }
+h1 { font-size: 1.8rem; margin-bottom: 20px; }
+p { font-size: 1.1rem; margin-bottom: 20px; }
 
-    button {
-      font-size: 1rem;
-      padding: 12px 26px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-      position: absolute;
-      top: 0;
-    }
+img {
+  max-width: 250px;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
 
-    button:hover {
-      transform: scale(1.05);
-    }
+button {
+  font-size: 1rem;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
 
-    .next-btn {
-      position: static;
-      background-color: #ff5c8a;
-      color: white;
-    }
+.next-btn {
+  background-color: #ff5c8a;
+  color: white;
+}
 
-    .yes-btn {
-      background-color: #ff5c8a;
-      color: white;
-      left: 0;
-      z-index: 1;
-    }
+/* Yes/No layout */
+.buttons {
+  position: relative;
+  width: 260px;
+  height: 60px;
+  margin-top: 30px;
+}
 
-    .no-btn {
-      background-color: #ddd;
-      color: #555;
-      left: 130px;
-      z-index: 2; /* Must be on top */
-    }
+.yes-btn {
+  background-color: #ff5c8a;
+  color: white;
+  left: 0;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+}
 
-    .slide {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
+.no-btn {
+  background-color: #ddd;
+  color: #555;
+  left: 130px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+}
 
-    .slide.active {
-      opacity: 1;
-      transform: translateX(0);
-      z-index: 1;
-    }
+.no-message {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #ff3b6f;
+  min-height: 1.2em;
+  text-align: center;
+}
 
-    .slide.exit-left {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
-    .no-message {
-      margin-top: 12px;
-      font-size: 0.95rem;
-      color: #ff3b6f;
-      min-height: 1.2em;
-      text-align: center;
-    }
-	
-	@media (max-width: 480px) {
-	  .card {
-	   overflow-y: auto;
-	   -webkit-overflow-scrolling: touch;
-	   }
-	   
-	   h1 {
-		 font-size: 1.4rem;
-		 
-		 }
-		 
-	    p {
-		  font-size: 1rem;
-		  
-		  }
-		
-		img {
-		  max-width: 180px;
-		  max-height: 160px
-		  
-		  }
-		}
-  </style>
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.slide.exit-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+</style>
 </head>
+
 <body>
-  <div class="floating-hearts" id="floatingHearts"></div>
 
-  <div class="container">
-    <div class="card">
+<div class="floating-hearts" id="floatingHearts"></div>
 
-      <!-- Slide 1 -->
-      <div class="slide active" id="slide-1">
-        <h1>here are some reasons why you should make me your valentine</h1>
-        <img src="https://media1.tenor.com/m/b379bFJGgYYAAAAC/pingu-begging.gif" alt="Slide 1 Image" />
-        <button class="next-btn" onclick="nextSlide()">Next</button>
-      </div>
+<div class="container">
+<div class="card">
 
-      <!-- Slide 2 -->
-      <div class="slide" id="slide-2">
-        <h1>1. i would let u beat me ✨</h1>
-        <img src="https://media1.tenor.com/m/Rukf_ikrukgAAAAC/happy-super-happy.gif" alt="Slide 2 Image" />
-        <button class="next-btn" onclick="nextSlide()">Next</button>
-      </div>
+<!-- Slide 1 -->
+<div class="slide active" id="slide-1">
+<h1>hiiiii</h1>
+<img src="https://cdn.7tv.app/emote/01GX6M9TRR000DJJ63WGMEA4Z8/4x.avif"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-      <!-- Slide 3 -->
-      <div class="slide" id="slide-3">
-        <h1>2. i would try my hardest to go 1 day without making u mad 💕</h1>
-        <img src="https://cdn.discordapp.com/attachments/751792332646645885/1240752733439660113/IMG_1185.png?ex=698ed747&is=698d85c7&hm=e3f83f74305e318d2fa3ea400f09eedf55507b4f1001c5333ad74481bd8614f9&" alt="Slide 3 Image" />
-        <button class="next-btn" onclick="nextSlide()">Next</button>
-      </div>
+<!-- Slide 2 -->
+<div class="slide" id="slide-2">
+<h1>so ummmm</h1>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-      <!-- Slide 4 -->
-      <div class="slide" id="slide-4">
-        <h1>3. i would play OW with u 💌</h1>
-        <img src="https://media1.tenor.com/m/JZcTfM6gGKoAAAAC/minion-black.gif" alt="Slide 4 Image" />
-        <button class="next-btn" onclick="nextSlide()">Next</button>
-      </div>
+<!-- Slide 3 -->
+<div class="slide" id="slide-3">
+<h1>here are some reasons u should totally be my valentine haha</h1>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-      <!-- Slide 5 -->
-      <div class="slide" id="slide-5">
-        <h1>4. we could raise 500 cats 🐈🐈 (and they could facetime like this)</h1>
-        <img src="https://i.ibb.co/tpqrDxBD/facetime.jpg" alt="Slide 5 Image" />
-        <button class="next-btn" onclick="nextSlide()">Next</button>
-      </div>
+<!-- Slide 4 -->
+<div class="slide" id="slide-4">
+<h1>1. i would let u beat me ✨</h1>
+<img src="https://media1.tenor.com/m/Rukf_ikrukgAAAAC/happy-super-happy.gif"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-      <!-- New Slide 6 -->
-      <div class="slide" id="slide-6">
-        <h1>YOOO WAIT A MINUTE WHY ARE WE SO FUCKING TUFFF</h1>
-        <img src="https://tr.rbxcdn.com/180DAY-dea659fc729b5f8550e06d83747c0edd/150/150/Image/Webp/noFilter" alt="Slide 6 Image" />
-        <button class="next-btn" onclick="nextSlide()">Next</button>
-      </div>
+<!-- Slide 5 -->
+<div class="slide" id="slide-5">
+<h1>2. i would try my hardest to go 1 day without making u mad 💕</h1>
+<img src="https://i.ibb.co/LdhF7pqk/melina.png"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-      <!-- New Slide 7 -->
-      <div class="slide" id="slide-7">
-        <h1>5. i would make phone calls for u (this is me telling the doctor u have aids) ❤️</h1>
-        <img src="https://media1.tenor.com/m/e-J8oTNjGvEAAAAC/winston-winton.gif" alt="Slide 7 Image" />
-        <button class="next-btn" onclick="nextSlide()">Next</button>
-      </div>
+<!-- Slide 6 -->
+<div class="slide" id="slide-6">
+<h1>3. i would even play OW with u 💌</h1>
+<img src="https://media1.tenor.com/m/JZcTfM6gGKoAAAAC/minion-black.gif"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-      <!-- Original Final Slide becomes Slide 8 -->
-      <div class="slide" id="slide-8">
-        <h1>So, will you be my valentine?</h1>
-        <div class="buttons">
-          <button class="yes-btn" id="yesBtn">Yes</button>
-          <button class="no-btn" id="noBtn">No</button>
-        </div>
-        <div class="no-message" id="noMessage"></div>
-      </div>
+<!-- Slide 7 -->
+<div class="slide" id="slide-7">
+<h1>4. and we could raise 500 cats 🐈🐈 (and they could facetime like this)</h1>
+<img src="https://i.ibb.co/tpqrDxBD/facetime.jpg"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-      <!-- Yay Slide becomes Slide 9 -->
-      <div class="slide" id="slide-9">
-        <h1>I HAVE NO WAY OF KNOWING IF YOU CLICKED YES BUT LETS GOOOO</h1>
-        <img src="https://media1.tenor.com/m/RiZpodi6JD0AAAAC/fast-cat-cat-excited.gif" alt="Celebration GIF" />
-        <p>two years later and i'm still falling in love with you. truly grateful i still have the privilege to ask you to be my valentine, and i'll never take that for granted. i love you more than you could ever imagine  </p>
-      </div>
+<!-- Slide 8 -->
+<div class="slide" id="slide-8">
+<h1>YOOO WAIT A MINUTE WE R SO FUCKING TUFFF WTFF</h1>
+<img src="https://tr.rbxcdn.com/180DAY-dea659fc729b5f8550e06d83747c0edd/150/150/Image/Webp/noFilter"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-    </div>
-  </div>
+<!-- Slide 9 -->
+<div class="slide" id="slide-9">
+<h1>5. i would make phone calls for u (this is me telling the doctor u have aids)❤️</h1>
+<img src="https://media1.tenor.com/m/e-J8oTNjGvEAAAAC/winston-winton.gif"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-  <script>
-    let currentSlide = 1;
-    const totalSlides = 9;
+<!-- Slide 10 -->
+<div class="slide" id="slide-10">
+<h1>6. i would religiously ragebait u (im the stoic monkey)</h1>
+<img src="https://i.redd.it/uplp3i6m5uae1.jpeg"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const buttonsBox = document.querySelector(".buttons");
-    const noMessage = document.getElementById("noMessage");
+<!-- NEW EXTRA SLIDE -->
+<div class="slide" id="slide-11">
+<h1>7. u would be the best passenger princess ever</h1>
+<img src="https://i.ibb.co/HfSD0tHT/art.jpg"/>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-    const noMessages = [
-      "no isn't an answer my darling",
-      "you're stuck with me",
-      "not today my love",
-      "i am afraid thats not gonna happen"
-    ];
+<div class="slide" id="slide-12">
+<h1>and more that i cant fit, so with that said...</h1>
+<button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
 
-    let noMessageIndex = 0;
+<!-- Yes/No Slide with runaway "No" -->
+<div class="slide" id="slide-13">
+<h1>will you be my valentine? ❤️</h1>
+<div class="buttons">
+<button class="yes-btn" id="yesBtn">Yes</button>
+<button class="no-btn" id="noBtn">No</button>
+</div>
+<div class="no-message" id="noMessage"></div>
+</div>
 
-    function nextSlide() {
-      const current = document.getElementById(`slide-${currentSlide}`);
-      current.classList.remove("active");
-      current.classList.add("exit-left");
+<!-- Final Slide -->
+<div class="slide" id="slide-14">
+<h1>even tho i spent days coding this i have no way of knowing if you clicked yes LOL</h1>
+<img src="https://media1.tenor.com/m/RiZpodi6JD0AAAAC/fast-cat-cat-excited.gif"/>
+<p>two years later and i'm still falling in love with you. truly grateful i still have the privilege to ask you to be my valentine, and i'll never take that for granted. i love you more than you could ever imagine my baby girl</p>
+</div>
 
-      currentSlide++;
-      const next = document.getElementById(`slide-${currentSlide}`);
-      next.classList.add("active");
+</div>
+</div>
 
-      if (currentSlide === 8) {
-        resetNoButton();
-      }
-    }
+<script>
+let currentSlide = 1;
+const totalSlides = 14;
 
-    function resetNoButton() {
-      noBtn.style.left = "130px";
-      noBtn.style.top = "0px";
-    }
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const buttonsBox = document.querySelector(".buttons");
+const noMessage = document.getElementById("noMessage");
 
-    function moveNoButtonRandomly() {
-      const boxRect = buttonsBox.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
+const noMessages = [
+  "no isn't an answer my darling",
+  "you're stuck with me",
+  "not today my love",
+  "i am afraid thats not gonna happen"
+];
 
-      const maxX = boxRect.width - btnRect.width;
-      const maxY = boxRect.height - btnRect.height;
+let noMessageIndex = 0;
 
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
+function nextSlide() {
+  const current = document.getElementById(`slide-${currentSlide}`);
+  current.classList.remove("active");
+  current.classList.add("exit-left");
 
-      noBtn.style.left = `${randomX}px`;
-      noBtn.style.top = `${randomY}px`;
+  currentSlide++;
+  const next = document.getElementById(`slide-${currentSlide}`);
+  if(next) next.classList.add("active");
 
-      noMessage.textContent = noMessages[noMessageIndex];
-      noMessageIndex = (noMessageIndex + 1) % noMessages.length;
-    }
+  if(currentSlide === 13){ // reset No button on Yes/No slide
+    resetNoButton();
+  }
+}
 
-    noBtn.addEventListener("mouseenter", moveNoButtonRandomly);
+function resetNoButton() {
+  noBtn.style.left = "130px";
+  noBtn.style.top = "0px";
+}
 
-    yesBtn.addEventListener("click", () => {
-      const current = document.getElementById(`slide-${currentSlide}`);
-      current.classList.remove("active");
-      current.classList.add("exit-left");
+function moveNoButtonRandomly() {
+  const boxRect = buttonsBox.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
 
-      const yaySlide = document.getElementById("slide-9");
-      yaySlide.classList.add("active");
-    });
+  const maxX = boxRect.width - btnRect.width;
+  const maxY = boxRect.height - btnRect.height;
 
-    /* Floating hearts generator */
-    const heartsContainer = document.getElementById("floatingHearts");
-    const heartEmojis = ["❤️", "💖", "💕", "💗", "💘", "💓", "🌹", "✨"];
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("floating-heart");
-      heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  noBtn.style.left = `${randomX}px`;
+  noBtn.style.top = `${randomY}px`;
 
-      const size = Math.random() * 20 + 15;
-      const duration = Math.random() * 5 + 6;
-      const delay = Math.random() * 2;
-      const left = Math.random() * 100;
+  noMessage.textContent = noMessages[noMessageIndex];
+  noMessageIndex = (noMessageIndex + 1) % noMessages.length;
+}
 
-      heart.style.fontSize = `${size}px`;
-      heart.style.left = `${left}%`;
-      heart.style.animationDuration = `${duration}s`;
-      heart.style.animationDelay = `${delay}s`;
+noBtn.addEventListener("mouseenter", moveNoButtonRandomly);
 
-      heartsContainer.appendChild(heart);
+yesBtn.addEventListener("click", () => {
+  createConfetti();
+  const current = document.getElementById(`slide-${currentSlide}`);
+  current.classList.remove("active");
+  current.classList.add("exit-left");
 
-      setTimeout(() => {
-        heart.remove();
-      }, (duration + delay) * 1000);
-    }
+  const finalSlide = document.getElementById("slide-14");
+  finalSlide.classList.add("active");
+});
 
-    setInterval(createHeart, 500);
-  </script>
+/* Floating hearts */
+const heartsContainer = document.getElementById("floatingHearts");
+const heartEmojis = ["❤️","💖","💕","💗","💘","💓","🌹","✨"];
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+  heartsContainer.appendChild(heart);
+  setTimeout(() => heart.remove(), 10000);
+}
+setInterval(createHeart, 500);
+
+/* Confetti function */
+function createConfetti(){
+  const colors=["#ff5c8a","#ffd700","#ffffff","#ff69b4"];
+  for(let i=0;i<120;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration=(Math.random()*2+3)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+  }
+}
+</script>
+
 </body>
 </html>
